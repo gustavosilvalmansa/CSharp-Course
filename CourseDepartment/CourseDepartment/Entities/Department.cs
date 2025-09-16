@@ -4,17 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Department.Entities
+namespace CourseDepartment.Entities
 {
     internal class Department
     {
         public string Name { get; set; }
-
-        public Department() { }
-        public Department(string name)
+        public string Code { get; set; }
+        public Department(string name, string code)
         {
             Name = name;
+            Code = code;
         }
+  
+  
 
     }
 }

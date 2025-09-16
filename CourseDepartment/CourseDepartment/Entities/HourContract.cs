@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Department.Entities
+namespace CourseDepartment.Entities
 {
     internal class HourContract
     {
@@ -12,6 +12,8 @@ namespace Department.Entities
         public DateTime Date { get; set; }
         public double ValuePerHour { get; set; }
         public int Hours { get; set; }
+
+
         public HourContract() { }
         public HourContract(DateTime date, double valuePerHour, int hours)
         {
@@ -22,6 +24,10 @@ namespace Department.Entities
         public double TotalValue()
         {
             return ValuePerHour * Hours;
+        }
+        public override string ToString()
+        {
+            return $"{Date.ToShortDateString()} - {Hours} hours at {ValuePerHour:C} each, Total: {TotalValue():C}";
         }
 
     }
