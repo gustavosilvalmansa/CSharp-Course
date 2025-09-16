@@ -1,0 +1,7 @@
+# Ignorar arquivos temporários do Visual Studio
+.vs/
+*.vsidx
+
+# Ignorar binários e pastas de build
+bin/
+obj/
