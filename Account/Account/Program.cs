@@ -7,12 +7,11 @@ namespace Account
     {
         static void Main(string[] args)
         {
-            Entities.Account acc = new Entities.Account(1001, "Alex", 0.0m);
-            BusinessAccount bacc = new BusinessAccount(1002, "Maria", 0.0m, 500.0);
+            BusinessAccount bacc = new BusinessAccount(1002, "Maria", 0.0, 500.0);
             // UPCASTING
             Entities.Account acc1 = bacc;
-            Entities.Account acc2 = new BusinessAccount(1003, "Bob", 0.0m, 200.0);
-            Entities.Account acc3 = new SavingsAccount(1004, "Anna", 0.0m, 0.01);
+            Entities.Account acc2 = new BusinessAccount(1003, "Bob", 0.0, 200.0);
+            Entities.Account acc3 = new SavingsAccount(1004, "Anna", 0.0, 0.01);
             // DOWNCASTING
             BusinessAccount acc4 = (BusinessAccount)acc2;
             acc4.Loan(100.0);
@@ -35,7 +34,6 @@ namespace Account
                 sa.UpdateBalance();
                 Console.WriteLine("Update!");
             }
-            Console.WriteLine(acc.Balance);
             Console.WriteLine(bacc.Balance);
         }
     }

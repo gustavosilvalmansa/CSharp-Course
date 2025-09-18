@@ -5,7 +5,7 @@ namespace Account.Entities
     {
         public double LoanLimit { get; set; }
         public BusinessAccount() { }
-        public BusinessAccount(int number, string holder, decimal balance, double loanLimit) : base(number, holder, balance)
+        public BusinessAccount(int number, string holder, double balance, double loanLimit) : base(number, holder, balance)
         {
             LoanLimit = loanLimit;
         }
@@ -13,7 +13,7 @@ namespace Account.Entities
         {
             if (amount <= LoanLimit)
             {
-                Balance += (decimal)amount;
+                Balance += (double)amount;
             }
         }
     }
