@@ -22,7 +22,7 @@ namespace InterfacesProject
             double pricePerDay = double.Parse(Console.ReadLine());
 
             CarRental carRental = new CarRental(start, finish, new Vehicle(model));
-            RentalService rentalService = new RentalService(pricePerHour, pricePerDay);
+            RentalService rentalService = new RentalService(pricePerHour, pricePerDay, new BrazilTaxService());
             rentalService.ProcessInvoice(carRental);
             Console.WriteLine("INVOICE:");
             Console.WriteLine(carRental.Invoice);
