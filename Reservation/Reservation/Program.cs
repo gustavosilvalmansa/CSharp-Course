@@ -1,52 +1,50 @@
 ﻿
 using Reservation.Entities;
+using Reservation.Entities.Exceptions;
 namespace Reservation
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Room number: ");
-            int roomNumber = int.Parse(Console.ReadLine());
-            Console.WriteLine("Check-in date (dd/MM/yyyy): ");
-            DateTime checkIn = DateTime.Parse(Console.ReadLine());
-            Console.WriteLine("Check-out date (dd/MM/yyyy): ");
-            DateTime checkOut = DateTime.Parse(Console.ReadLine());
 
-            if (checkOut <= checkIn)
+
+            try
             {
-                Console.WriteLine("Error in reservation: Check-out date must be after check-in date");
-                return;
-            }
-            else
-            {
+                Console.WriteLine("Room number: ");
+                int roomNumber = int.Parse(Console.ReadLine());
+                Console.WriteLine("Check-in date (dd/MM/yyyy): ");
+                DateTime checkIn = DateTime.Parse(Console.ReadLine());
+                Console.WriteLine("Check-out date (dd/MM/yyyy): ");
+                DateTime checkOut = DateTime.Parse(Console.ReadLine());
+
                 ReservationClass reservation = new ReservationClass(roomNumber, checkIn, checkOut);
                 Console.WriteLine("Reservation: " + reservation);
+
                 Console.WriteLine();
                 Console.WriteLine("Enter data to update the reservation: ");
                 Console.WriteLine("Check-in date (dd/MM/yyyy): ");
                 checkIn = DateTime.Parse(Console.ReadLine());
                 Console.WriteLine("Check-out date (dd/MM/yyyy): ");
                 checkOut = DateTime.Parse(Console.ReadLine());
-                DateTime now = DateTime.Now;
 
-                if (checkIn < now || checkOut < now)
-                {
-                    Console.WriteLine("Error in reservation: Reservation dates for update must be future dates");
-                    return;
-                }
-                else if (checkOut <= checkIn)
-                {
-                    Console.WriteLine("Error in reservation: Check-out date must be after check-in date");
-                    return;
-                }
-                else
-                {
-                    reservation.UpdateDates(checkIn, checkOut);
-                    Console.WriteLine("Reservation: " + reservation);
-                }
+
+                reservation.UpdateDates(checkIn, checkOut);
+                Console.WriteLine("Reservation: " + reservation);
 
             }
+            catch(DomainException e) { 
+                Console.WriteLine("Error in reservation: " + e.Message);
+            }
+            catch(FormatException e)
+            {
+                Console.WriteLine("Format error: " + e.Message);
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine("Unexpected error: " + e.Message);
+            }
+
         }
     }
 }
