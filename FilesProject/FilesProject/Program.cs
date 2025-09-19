@@ -18,6 +18,18 @@ namespace FilesProject
                 }
                 Directory.CreateDirectory(SourcePath + @"newfolder");
 
+                //Playing with Paths
+                Console.WriteLine("PATHS");
+                Console.WriteLine(Path.GetFileName(SourcePath));
+                Console.WriteLine(Path.GetFileNameWithoutExtension(SourcePath));
+                Console.WriteLine(Path.GetDirectoryName(SourcePath));
+                Console.WriteLine(Path.GetExtension(SourcePath));
+                Console.WriteLine(Path.GetFullPath(SourcePath));
+                Console.WriteLine(Path.GetTempPath());
+                Console.WriteLine(Path.GetRandomFileName());
+                Console.WriteLine(Path.Combine(SourcePath, "newfolder"));
+
+
 
             }
             catch(IOException ex)
