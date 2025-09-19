@@ -24,6 +24,11 @@ namespace Reservation.Entities
             TimeSpan duration = checkOut.Subtract(checkIn);
             return (int)duration.TotalDays;
         }
+        public void UpdateDates(DateTime checkIn, DateTime checkOut)
+        {
+            this.checkIn = checkIn;
+            this.checkOut = checkOut;
+        }
 
         public override string ToString()
         {
