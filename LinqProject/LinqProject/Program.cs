@@ -40,7 +40,12 @@ namespace LinqProject
             };
 
             Console.WriteLine("TIER 1 PRODUCTS:");
-            var r1 = products.Where(p => p.Category.Tier == 1 && p.Price < 900.0);
+            var r1_OLD= products.Where(p => p.Category.Tier == 1 && p.Price < 900.0);
+            var r1 = 
+                from p in products
+                where p.Category.Tier == 1 && p.Price < 900.0
+                select p;
+
             Print("Tier 1 and Price < 900:", r1);
 
             var r2 = products.Where(p => p.Category.Name == "Tools").Select(p => p.Name);
